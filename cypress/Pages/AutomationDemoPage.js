@@ -1,6 +1,7 @@
 ///<reference types ="cypress"/>
 
 //css selector
+export const NAV_BAR = ".container .navbar-nav >li"
 export const HOME_MENU = ".nav.navbar-nav>li>a[href='Index.html']"
 export const REGISTER_MENU = ".nav.navbar-nav>li>a[href='Register.html']"
 export const WEB_TABLE_MENU = ".nav.navbar-nav>li>a[href='WebTable.html']"
@@ -26,7 +27,6 @@ export const LANGUAGES = '#msdd'
 export const LANGUAGE_LIST_ITEM = '.ng-scope'
 export const PASSWORD = '#firstpassword'
 export const SKILLS = '#Skills'
-export const COUNTRIES = '#countries'
 export const COUNTRIES_DROP_DOWN = '[role=combobox]'
 export const COUNTRY_SEARCH_TEXTBOX = '.select2-search__field'
 export const YEAR_DROP_DOWN = '#yearbox'
@@ -34,6 +34,7 @@ export const MONTH_DROP_DOWN = "[placeholder='Month']"
 export const DAY_DROP_DOWN = '#daybox'
 export const CONFIRM_PASSWORD = '#secondpassword'
 export const SUBMIT_BTN = '#submitbtn'
+export const REFRESH = '#Button1'
 
 class AutomationDemoPage {
 
@@ -41,136 +42,323 @@ class AutomationDemoPage {
         cy.visit("http://demo.automationtesting.in/Register.html")
     }
 
-    get HomeMenu() { 
+    getNavBarItem(){
+        return cy.get(NAV_BAR);
+    }
+
+    getHomeMenu() { 
         return cy.get(HOME_MENU, {timeout: 10000}) 
     }
 
-    get RegisterMenu() {
+    getRegisterMenu() {
         return cy.get(REGISTER_MENU);
     }
 
-    get WebTableMenu() {
+    getWebTableMenu() {
         return cy.get(WEB_TABLE_MENU);
     }
 
-    get SwitchToMenu() {
+    getSwitchToMenu() {
         return cy.get(SWITCH_TO_MENU);
     }
 
-    get WidgetMenu() {
+    getWidgetMenu() {
         return cy.get(WIDGET_MENU);
     }
 
-    get InteractionMenu() {
+    getInteractionMenu() {
         return cy.get(INTERACTION_MENU);
     }
 
-    get VideoMenu() {
+    getVideoMenu() {
         return cy.get(VIDEO_MENU);
     }
 
-    get WYSIWYGMenu() {
+    getWYSIWYGMenu() {
         return cy.get(WYSIWYG_MENU);
     }
 
-    get MoreMenu() {
+    getMoreMenu() {
         return cy.get(MORE_MENU);
     }
 
-    get PractiseSiteMenu() {
+    getPractiseSiteMenu() {
         return cy.get(PRACTISE_SITE_MENU);
     }
 
-    get RegisterPageHeader() {
+    getRegisterPageHeader() {
         return cy.get(REGISTER_PAGE_HEADER);
     }
 
-    get FirstNameTextbox() {
+    getFirstNameTextbox() {
         return cy.get(FIRST_NAME_TEXT_BOX);
     }
 
-    get LastNameTextbox() {
+    getLastNameTextbox() {
         return cy.get(LAST_NAME_TEXT_BOX);
     }
 
-    get AddressTextbox() {
+    getAddressTextbox() {
         return cy.get(ADDRESS_TEXT_BOX);
     }
 
-    get EmailTextbox() {
+    getEmailTextbox() {
         return cy.get(EMAIL_TEXT_BOX);
     }
 
-    get PhoneTextbox() {
+    getPhoneTextbox() {
         return cy.get(PHONE_TEXT_BOX);
     }
 
-    get MaleRadioBtn() {
+    getMaleRadioBtn() {
         return cy.get(MALE_RADIO_BTN);
     }
 
-    get Checkbox1() {
+    getCheckbox1() {
         return cy.get(CHECKBOX1);
     }
 
-    get Checkbox2() {
+    getCheckbox2() {
         return cy.get(CHECKBOX2);
     }
 
-    get Checkbox3() {
+    getCheckbox3() {
         return cy.get(CHECKBOX3);
     }
 
-    get Checkbox() {
+    getCheckbox() {
         return cy.get(CHECKBOX);
     }
 
-    get Languages() {
+    getLanguages() {
         return cy.get(LANGUAGES);
     }
 
-    get LanguageListItem() {
+    getLanguageListItem() {
         return cy.get(LANGUAGE_LIST_ITEM);
     }
 
-    get Password() {
+    getPassword() {
         return cy.get(PASSWORD);
     }
 
-    get Skills() {
+    getSkills() {
         return cy.get(SKILLS);
     }
 
-    get Countries() {
-        return cy.get(COUNTRIES);
-    }
-
-    get CountriesDropDown() {
+    getCountriesDropDown() {
         return cy.get(COUNTRIES_DROP_DOWN);
     }
 
-    get CountrySearchTextbox() {
+    getCountrySearchTextbox() {
         return cy.get(COUNTRY_SEARCH_TEXTBOX);
     }
 
-    get YearDropDown() {
+    getYearDropDown() {
         return cy.get(YEAR_DROP_DOWN);
     }
 
-    get MonthDropDown() {
+    getMonthDropDown() {
         return cy.get(MONTH_DROP_DOWN);
     }
 
-    get DayDropDown() {
+    getDayDropDown() {
         return cy.get(DAY_DROP_DOWN);
     }
 
-    get ConfirmPassword() {
+    getConfirmPassword() {
         return cy.get(CONFIRM_PASSWORD)
     }
 
-    get SubmitBtn() {
-        return  cy.get(SUBMIT_BTN);
+    getSubmitBtn() {
+        return cy.get(SUBMIT_BTN);
     }
+
+    getRefreshBtn(){
+        return cy.get(REFRESH);
+    }    
+
+    //Action Methods
+    typeFirstNameTextBox(){
+        this.getFirstNameTextbox().type('Michael');
+    }
+
+    typeLastNameTextBox(){
+        this.getLastNameTextbox().type("clark")
+    }
+
+    typeAddressTextBox(){
+        this.getAddressTextbox().type('P3, Magarpatta');
+    }
+   
+    typeEmailTextBox(){
+        this.getEmailTextbox().type('test@user.com');
+    }
+
+    typePhoneTextBox(){
+        this.getPhoneTextbox().type('123456789');
+    }
+
+    clickMaleRadioBtn(){
+        this.getMaleRadioBtn().click();
+    }
+
+
+    clickSubmitBtn(){
+        this.getSubmitBtn().click();
+    }
+
+    clickLanguages(){
+        this.getLanguages().click();
+    }
+
+    // clickLanguageListItem(){
+    //     let lang =['English','Dutch','Urdu'];
+    //     this.getLanguageListItem().each(ele => {
+    //         if(lang.includes(ele.text())){
+    //             cy.wrap(ele).click();
+    //         }
+    //     })
+    // }
+
+    clickLanguageListItem(){
+        this.getLanguageListItem().contains("English").click();          
+    }
+
+    clickConfirmPassword(){
+        this.getConfirmPassword().click();
+    }
+
+    clickCountriesDropDown(){
+        this.getCountriesDropDown().click();
+    }
+
+    typeCountrySearchTextbox(){
+        this.getCountrySearchTextbox().type("India").type("{enter}")
+    }
+
+    typePassword(){
+        this.getPassword().type('Test!@#345');
+    }
+
+    typeConfirmPassword(){
+        this.getConfirmPassword().type('Test!@#345');
+    }
+
+    clickRefreshBtn(){
+        this.getRefreshBtn().click();
+    }
+    
+
+    
+
+    //Verification Method
+
+    verifyNavBarItem(){
+        this.getNavBarItem().each(($el, $index) => {
+
+         let productName = $el.text();
+
+         cy.log("ProductName: " + productName + " " + " Index: " + $index);
+
+        });
+
+    }
+    verifyHomeMenu(){
+        this.getHomeMenu().should("contain","Home");
+    }
+
+    verifyRegisterMenu(){
+        this.getRegisterMenu().should("contain", "Register");
+    }
+
+    verifyWebTableMenu(){
+        this.getWebTableMenu().should("contain", "WebTable");
+    }
+    
+    verifySwitchToMenu(){
+        this.getSwitchToMenu().should("contain","SwitchTo");
+    }
+
+    verifyWidgetsMenu(){
+        this.getWidgetMenu().should("contain", "Widgets");
+    }
+
+    verifyInteractionMenu(){
+        this.getInteractionMenu().should("contain", "Interactions");
+    }
+
+    verifyVideoMenu(){
+        this.getVideoMenu().should("contain","Video");
+    }
+
+    verifyWYSIWYGMenu(){
+        this.getWYSIWYGMenu().should("contain","WYSIWYG");
+    }
+
+    verifyMoreMenu(){
+        this.getMoreMenu().should("contain","More");
+    }
+
+    verifyPracticeSiteMenu(){
+        this.getPractiseSiteMenu().should("contain","Practice Site");
+    }
+
+    verifyRegisterPageHeader(){
+        this.getRegisterPageHeader().should("contain","Register");
+    }
+    
+    verifyCheckbox1Check(){
+        this.getCheckbox1().check().should('be.checked').and('have.value', 'Cricket');
+    }
+
+    verifyCheckbox1Uncheck(){
+        this.getCheckbox1().uncheck().should('not.be.checked');
+    }
+
+    verifyCheckbox2Check(){
+        this.getCheckbox2().check().should('be.checked').and('have.value', 'Movies');
+    }
+
+    verifyCheckbox2Uncheck(){
+        this.getCheckbox2().uncheck().should('not.be.checked');
+    }
+
+    verifyCheckbox3Check(){
+        this.getCheckbox3().check().should('be.checked').and('have.value', 'Hockey');
+    }
+    
+    verifyCheckbox3Uncheck(){
+        this.getCheckbox3().uncheck().should('not.be.checked');
+    }
+
+    verifyCheckbox(){
+        this.getCheckbox().check(['Cricket','Movies','Hockey']);
+    }
+
+    verifyLanguageListItem(){
+        this.getLanguageListItem().should("have.length",42);
+    }
+
+    verifySkills(){
+        this.getSkills().select("Javascript").should('have.value', 'Javascript');
+    }
+
+    verifyYearDropDown(){
+        this.getYearDropDown().select('1998').should('have.value', '1998');
+    }
+
+    verifyMonthDropDown(){
+        this.getMonthDropDown().select('August').should('have.value', 'August');
+    }
+
+    verifyDayDropDown(){
+        this.getDayDropDown().select('26').should('have.value', '26');
+    }
+
+    verifyRefreshBtn(){
+        this.getFirstNameTextbox().should("have.text","")
+    }
+
 }
 export default new AutomationDemoPage()
